@@ -1,1 +1,258 @@
+/* variables */
+:root{
+  --bg:#000;
+  --panel:#111;
+  --line:#2b2b2b;
+  --txt:#fff;
+  --mut:#9a9a9a;
+  --acc:#3b82f6;
+  color-scheme:dark;
+}
 
+/* base */
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font:16px/1.6 ui-monospace,Menlo,Consolas,monospace;
+  min-height:100vh;
+}
+
+a{color:var(--acc);text-decoration:none}
+
+/*kkd */
+.view{
+  display:none;
+  min-height:100vh;
+  padding:40px 20px;
+}
+.view.on{display:block}
+
+/* portada */
+#home.on{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+/* el logo */
+#home img{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  filter:contrast(1.25) brightness(1.05);
+}
+
+h1{margin-top:18px;font-size:32px}
+.sub{color:var(--mut);margin-top:6px}
+
+.btn{
+  margin-top:26px;
+  background:none;
+  border:1px solid var(--acc);
+  color:var(--acc);
+  padding:10px 26px;
+  border-radius:6px;
+  font:inherit;
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease;
+}
+.btn:hover{background:var(--acc);color:#fff}
+
+.links{display:flex;gap:12px;margin-top:20px}
+.links a{color:var(--mut);font-size:14px}
+.links a:hover{color:var(--acc)}
+
+/*ddf */
+#wu .box{
+  width:100%;
+  max-width:960px;
+  margin:0 auto;
+}
+
+#wu .head{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:16px;
+  margin-bottom:32px;
+}
+
+.head h2{
+  justify-self:center;
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+  width:10ch;
+  font-size:22px;
+}
+.head h2::before{content:"# ";color:var(--acc)}
+
+.back{
+  justify-self:start;
+  background:none;
+  border:1px solid var(--line);
+  color:var(--txt);
+  padding:6px 14px;
+  border-radius:6px;
+  font:inherit;
+  cursor:pointer;
+  transition:transform .2s ease,border-color .2s ease,color .2s ease;
+}
+.back:hover{border-color:var(--acc);color:var(--acc);transform:translateX(-5px)}
+
+input{
+  justify-self:end;
+  width:100%;
+  max-width:240px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--txt);
+  padding:10px 12px;
+  border-radius:6px;
+  font:inherit;
+  transition:box-shadow .25s ease,transform .25s ease;
+}
+input:focus{
+  outline:1px solid var(--acc);
+  box-shadow:0 0 18px rgba(59,130,246,.35);
+  transform:scale(1.01);
+}
+
+/*writeups repos */
+#list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:14px;
+}
+
+.item{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+  min-height:120px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:15px 17px;
+  color:var(--txt);
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.item:hover{
+  border-color:var(--acc);
+  transform:translateX(8px) scale(1.01);
+  box-shadow:0 0 22px rgba(59,130,246,.25);
+}
+.item:active{transform:translateX(4px) scale(.995)}
+
+
+.item::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:40%;
+  height:100%;
+  background:linear-gradient(100deg,transparent,rgba(59,130,246,.22),transparent);
+  transform:skewX(-20deg);
+  transition:left .6s ease;
+}
+.item:hover::after{left:130%}
+
+.item b{display:block;font-size:17px;margin-bottom:4px}
+.item small{color:var(--mut)}
+
+.badge{
+  font-size:12px;
+  border:1px solid var(--line);
+  padding:2px 10px;
+  border-radius:12px;
+  color:var(--acc);
+  white-space:nowrap;
+  animation:pulse 2.4s ease-in-out infinite;
+}
+
+.empty{
+  grid-column:1/-1;
+  color:var(--mut);
+  text-align:center;
+  padding:30px 0;
+}
+
+/*animaciones*/
+@keyframes rise{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fromL{
+  from{opacity:0;transform:translateX(-60px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fromR{
+  from{opacity:0;transform:translateX(60px)}
+  to{opacity:1;transform:none}
+}
+@keyframes type{to{width:10ch}}
+@keyframes caret{50%{border-right-color:transparent}}
+@keyframes blink{to{visibility:hidden}}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.5)}
+  50%{box-shadow:0 0 0 6px rgba(59,130,246,0)}
+}
+
+
+.view.on .head h2{
+  width:0;
+  border-right:2px solid var(--acc);
+  animation:type .8s steps(10) .2s forwards,
+            caret .5s step-end 3 .2s;
+}
+
+.view.on .box>.head{animation:rise .5s ease both}
+.view.on .box>input{animation:rise .5s ease .1s both}
+
+
+.enter .item:nth-child(odd){
+  animation:fromL .6s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay:calc(.25s + var(--i,0)*110ms);
+}
+.enter .item:nth-child(even){
+  animation:fromR .6s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay:calc(.25s + var(--i,0)*110ms);
+}
+.enter .empty{animation:rise .6s ease .3s both}
+
+/* el cursor que parpadea en el estado vacio */
+.cur{
+  display:inline-block;
+  width:9px;
+  height:1em;
+  background:var(--acc);
+  vertical-align:-2px;
+  margin-left:4px;
+  animation:blink 1s steps(2,start) infinite;
+}
+
+
+@media (max-width:640px){
+  #wu .head{
+    grid-template-columns:1fr auto;
+    grid-template-areas:
+      "back title"
+      "search search";
+  }
+  #wu .head .back{grid-area:back}
+  #wu .head h2{grid-area:title;justify-self:end}
+  #wu .head input{grid-area:search;max-width:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .view.on .head h2{width:10ch;border:0}
+}
