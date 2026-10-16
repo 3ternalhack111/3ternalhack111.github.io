@@ -151,7 +151,6 @@ input:focus{
 }
 .item:active{transform:translateX(4px) scale(.995)}
 
-
 .item::after{
   content:"";
   position:absolute;
@@ -206,7 +205,6 @@ input:focus{
   50%{box-shadow:0 0 0 6px rgba(59,130,246,0)}
 }
 
-
 .view.on .head h2{
   width:0;
   border-right:2px solid var(--acc);
@@ -216,7 +214,6 @@ input:focus{
 
 .view.on .box>.head{animation:rise .5s ease both}
 .view.on .box>input{animation:rise .5s ease .1s both}
-
 
 .enter .item:nth-child(odd){
   animation:fromL .6s cubic-bezier(.2,.8,.2,1) both;
@@ -228,7 +225,7 @@ input:focus{
 }
 .enter .empty{animation:rise .6s ease .3s both}
 
-/* el cursor que parpadea en el estado vacio */
+
 .cur{
   display:inline-block;
   width:9px;
@@ -238,7 +235,6 @@ input:focus{
   margin-left:4px;
   animation:blink 1s steps(2,start) infinite;
 }
-
 
 @media (max-width:640px){
   #wu .head{
