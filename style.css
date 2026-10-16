@@ -339,3 +339,6 @@ input:focus{
 .hljs-section,.hljs-title{color:#fff;font-weight:600}
 .hljs-addition{display:block;color:#8ee6a8;background:rgba(59,130,246,.07)}
 .hljs-deletion{display:block;color:#ff9b9b;background:rgba(255,90,90,.07)}
+/* color gris y azul */
+.hljs-deletion{display:block;color:#7d7d7d;background:transparent}
+.hljs-addition{display:block;color:#6ea8fe;background:rgba(59,130,246,.08)}
