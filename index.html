@@ -72,7 +72,7 @@ function render(){
 
   $('#list').innerHTML = l.length
     ? l.map((w,i) =>
-        `<a class="item" style="--i:${i}" href="${esc(w.link)}" target="_blank" rel="noopener">
+       `<a class="item" style="--i:${i}" href="${esc(w.link)}">
            <span class="badge">${esc(w.platform)}</span>
            <span><b>${esc(w.title)}</b><small>${esc(w.date)}</small></span>
          </a>`).join('')
