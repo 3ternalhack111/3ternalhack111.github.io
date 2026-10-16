@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3ternalhack</title>
+<link rel="icon" href="https://raw.githubusercontent.com/3ternalhack111/3ternalhack111.github.io/main/eternal.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<section class="view on" id="home">
+  <img src="https://raw.githubusercontent.com/3ternalhack111/3ternalhack111.github.io/main/eternal.png" onerror="this.onerror=null;this.src='eternal.png'" alt="3ternalhack">
+  <h1>3ternalhack</h1>
+  <p class="sub"></p>
+  <button class="btn" id="go">Ver writeups</button>
+  <div class="links">
+    <a href="https://github.com/3ternalhack111" target="_blank" rel="noopener">GitHub</a>
+    <a href="eternalhackcontact@yahoo.com">Email</a>
+  </div>
+</section>
+
+<section class="view" id="wu">
+  <div class="box">
+    <div class="head">
+      <button class="back" id="back">← Volver</button>
+      <h2>Writeups</h2>
+      <input id="q" type="search" placeholder="Buscar writeup...">
+    </div>
+    <div id="list"></div>
+  </div>
+</section>
+
+<script>
+
+const WRITEUPS = [
+  {
+    title: "366 emisoras de radio y una api escondida",
+    platform: "Web",
+    date: "2026-10-16",
+    link: "https://github.com/3ternalhack111/emisorascolombianas"
+  }
+];
+
+
+const $   = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/*vistas*/
+function show(id){
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === id));
+  window.scrollTo(0,0);
+}
+
+function route(){
+  const wu = location.hash === '#writeups';
+  if (wu){ enter = true; render(); }
+  show(wu ? 'wu' : 'home');
+}
+
+/*lista */
+let enter = true;
+
+function render(){
+  const q = $('#q').value.toLowerCase();
+
+  const l = WRITEUPS
+    .filter(w => (w.title + w.platform).toLowerCase().includes(q))
+    .sort((a,b) => b.date.localeCompare(a.date));
+
+  $('#list').classList.toggle('enter', enter);
+
+  $('#list').innerHTML = l.length
+    ? l.map((w,i) =>
+        `<a class="item" style="--i:${i}" href="${esc(w.link)}" target="_blank" rel="noopener">
+           <span class="badge">${esc(w.platform)}</span>
+           <span><b>${esc(w.title)}</b><small>${esc(w.date)}</small></span>
+         </a>`).join('')
+    : (WRITEUPS.length
+        ? '<p class="empty">Sin resultados.</p>'
+        : '<p class="empty"><span class="cur"></span></p>');
+
+  enter = false;
+}
+
+
+$('#go').onclick   = () => location.hash = 'writeups';
+$('#back').onclick = () => location.hash = '';
+$('#q').addEventListener('input', render);
+window.addEventListener('hashchange', route);
+
+route();
+</script>
+</body>
+</html>
