@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>366 emisoras de radio y una api escondida - 3ternalhack</title>
+<link rel="icon" href="../eternal.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<section class="view on">
+  <article class="post">
+
+    <a class="volver" href="../">← Volver</a>
+
+    <h1>366 emisoras de radio y una api escondida</h1>
+    <p class="fecha">16 octubre 2026 · Web</p>
+
+    <div class="pills">
+      <span>nmap</span>
+      <span>django</span>
+      <span>api</span>
+      <span>mass assignment</span>
+    </div>
+
+    <div class="doc" id="doc">cargando...</div>
+
+  </article>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+<script>
+fetch('emisoras.md')
+  .then(r => r.text())
+  .then(md => {
+    document.getElementById('doc').innerHTML = marked.parse(md);
+    document.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+  })
+  .catch(() => {
+    document.getElementById('doc').innerHTML = '<p>no se pudo cargar el writeup</p>';
+  });
+</script>
+</body>
+</html>
