@@ -2,7 +2,7 @@
 por 3ternalhack111
 
 
-<img width="210" height="90" alt="image" src="https://github.com/user-attachments/assets/f5076036-7f32-4542-8daa-970a460a97ea" />
+<img width="210" height="90" alt="image" src="img/1.png" />
 : REGIONAL RADIOS / 366 dominios / 1 API escondida / por 3ternalhack111*
 
 Mi primer pentest de verdad. Reconocimiento pasivo hasta encontrar un backend
@@ -37,7 +37,7 @@ los puertos abiertos eran 22 80 y 443. y ya
 +443/tcp  open  https
 ```
 
-<img width="532" height="142" alt="image" src="https://github.com/user-attachments/assets/58d95705-a52c-4941-9f95-942a05551a03" />
+<img width="532" height="142" alt="image" src="img/2.png" />
 
 
 ```diff
@@ -66,7 +66,7 @@ PS C:\WINDOWS\system32> nmap -Pn -n -p22 --script ssh-auth-methods 79.137.88.105
 +test@79.137.88.105: Permission denied (publickey).
 ```
 
-<img width="462" height="82" alt="image" src="https://github.com/user-attachments/assets/53d79a65-faa3-417b-88bd-022f9122adb1" />
+<img width="462" height="82" alt="image" src="img/3.png" />
 
 
 solo publickey. sin usuario ni clave no hay entrada
@@ -168,7 +168,7 @@ PS C:\WINDOWS\system32> curl.exe -si "https://regional-radios.app-mind.com/api/"
 +WWW-Authenticate: Basic realm="Authorized Only"
 ```
 
-<img width="483" height="116" alt="image" src="https://github.com/user-attachments/assets/75c69362-61c7-44ef-b48c-986bddc972bd" />
+<img width="483" height="116" alt="image" src="img/4.png" />
 
 
 la raiz y `/admin/` estan detras de Basic Auth. pero `/api/` esta exento
@@ -286,7 +286,7 @@ PS C:\WINDOWS\system32> foreach ($p in @("/api/user/favorites/","/api/user/votes
 +Allow: POST, OPTIONS
 ```
 
-<img width="537" height="116" alt="image" src="https://github.com/user-attachments/assets/ac60b131-1bbb-46eb-a70c-ceadba367a9c" />
+<img width="537" height="116" alt="image" src="img/5.png" />
 
 
 ## el content_type
@@ -322,7 +322,7 @@ PS C:\WINDOWS\system32> curl.exe -si -X POST "$api/api/user/favorites/" --data-b
 
 `name` `slug` `image_url` `url` y `extra_data` los controla el cliente
 
-<img width="572" height="113" alt="image" src="https://github.com/user-attachments/assets/fa9d044b-1067-48cc-a63b-6d6aa7f3b0c0" />
+<img width="572" height="113" alt="image" src="img/6.png" />
 
 
 ## xss
@@ -470,7 +470,7 @@ conclusion: es un SECRET_KEY autogenerado por Django
 
 la unica via es el Basic Auth. y ahi sigue
 
-<img width="682" height="87" alt="image" src="https://github.com/user-attachments/assets/b94f0c91-8725-4f1f-b4d0-b1138e04333f" />
+<img width="682" height="87" alt="image" src="img/7.png" />
 
 
 ## el script
@@ -566,3 +566,4 @@ Python con hmac y multiprocessing
 ---
 
 hecho por 3ternalhack111
+
